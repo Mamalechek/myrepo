@@ -268,7 +268,7 @@ const playerJump = function jump() {
     
     player.style.transform = `translate(${leftPos}px, -${jumpHeight.height}px) scale(${scale}, 1)`;
 
-    if(jumpHeight.height < 0) {
+    if(jumpHeight.height <= 0) {
         jumpUp = true;
         playerInJump = false;
         let count = null;
