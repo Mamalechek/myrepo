@@ -168,7 +168,9 @@ const addSlider = function(e) {
     div.style.top = '-2px';
     div.style.left = 'calc(50% - 1px)';
 
-    thumb.addEventListener('dragstart', () => { return false});
+    thumb.addEventListener('dragstart', () => {
+        return false;
+    });
     document.addEventListener('mousedown', changeSpeed);
     document.addEventListener('click', moveThumbByClick);
 }
