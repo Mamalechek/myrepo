@@ -1193,6 +1193,7 @@ backButton.addEventListener('click', backFunc);
 
 const loadImg = function() {
     let sources = [
+        './img/kids-math-game.jpg',
         './img/wiki/choose.png',
         './img/field-bg.jpg',
         './img/Spongebob.png',
@@ -1200,9 +1201,13 @@ const loadImg = function() {
         './img/explosion.png',
         './img/balloons.png'
     ];
-    let img = document.createElement('img');
-    for(let i = 0; i < sources.length; i++)
-        img.src = sources[i];
+
+    let div = document.createElement("div");
+    div.style.position = "absolute";
+    s.top = div.style.left = 0;
+    div.style.visibility = "hidden";
+    document.body.appendChild(div);
+    div.innerHTML = "<img src=\"" + sources.join("\" /><img src=\"") + "\" />";
 }
 
 document.addEventListener('DOMContentLoaded', loadImg);
