@@ -1,0 +1,378 @@
+@font-face {
+   font-family: 'Kabel';
+   src:local("Kabel"),
+   url(../fonts/Kabel/kabel.ttf);
+}
+
+@font-face {
+   font-family: 'Jokerman';
+   src:local("Jokerman"),
+   url(../fonts/Jokerman/Jokerman.ttf);
+}
+
+@font-face {
+   font-family: 'Hind Semibold';
+   src:local("Hind Semibold"),
+   url(../fonts/Hind/Hind-Semibold.ttf);
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html {
+   height: 100%;
+}
+
+body {
+   height: 100%;
+   padding: 20px 0;
+   overflow: hidden;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   cursor: default;
+}
+
+.field {
+   position: relative;
+
+   width: 60%;
+   height: 95%;
+   margin: 0 auto;
+   padding-top: 15px;
+
+   text-align: center;
+   border: 3px solid #000;
+   overflow: hidden;
+   background-repeat: no-repeat;
+}
+
+.field::after {
+   content: "";
+   clear: both;
+}
+
+.game-button, .level, .operation, .restart {
+   position: absolute;
+   top: calc(50% - 50px);
+   left: calc(50% - 300px);
+   width: 600px;
+   height: 100px;
+   
+   font: 600 50px/85px "Jokerman";
+   color: #fff;
+   letter-spacing: 0.2em;
+   text-align: center;
+   border-radius: 10px;
+   cursor: pointer;
+}
+
+.start {
+   background-color: #9CE137;
+}
+
+.wiki {
+   top: calc(50% + 80px);
+   left: calc(50% - 250px);
+   width: 500px;
+   background-color: orange;
+}
+
+.level {
+   width: 900px;
+   left: calc(50% - 450px);
+   font-size: 90px;
+   line-height: 100px;
+   color: blue;
+   cursor: default;
+   z-index: 10;
+}
+
+.operation {
+   top: 17%;
+   height: 85px;
+   line-height: 60px;
+   background-color: #58D232;
+}
+
+.operation::before {
+   display: inline-block;
+   content: "";
+   height: 100%;
+   vertical-align: middle;
+}
+.operation span {
+   display: inline-block;
+   vertical-align: middle;
+   font-size: 70px;
+}
+
+.slider {
+   position: absolute;
+   bottom: 45px;
+   left: calc(50% - 110px);
+   width: 210px;
+   height: 15px;
+   margin: 5px;
+   border-radius: 5px;
+   background: #E0E0E0;
+   background: linear-gradient(left top, #E0E0E0, #EEEEEE);
+}
+
+.thumb {
+   position: absolute;
+   left: 0;
+   top: -5px;
+   width: 10px;
+   height: 25px;
+   border-radius: 3px;
+   background: #25196C;
+   cursor: pointer;
+}
+
+.slider-legend {
+   position: absolute;
+   left: calc(50% - 100px);
+   width: 200px;
+   
+   font: 900 18px "Kabel";
+   color: #25196C;
+   letter-spacing: 0.2em;
+   text-align: center;
+   cursor: pointer;
+}
+
+.restart {
+   top: calc(50% - 30px);
+   left: calc(50% - 200px);
+   width: 400px;
+   height: 80px;
+   font-size: 30px;
+   background-color: blue;
+}
+
+.wiki-image {
+   width: 800px;
+   height: 595px;
+   margin: 0 auto;
+   border: 1px solid #000;
+}
+
+.arrow-left, .arrow-right{
+   position: absolute;
+   bottom: 20px;
+   display: inline-block;
+   width: 4em;
+   height: 4em;
+   vertical-align: middle;
+   text-decoration: none;
+   border: 0.8em solid rgba(0,0,0,0);
+   border-radius: 50%;
+   background: rgb(245,245,245) linear-gradient(rgb(245,245,245), rgb(188,192,193)) 50% 50% / calc(4em + 1em*2) calc(4em + 1em*2);
+   box-shadow:
+      inset 0 -3px 10px rgba(255,255,255,1),
+      inset 0 3px 10px rgba(0,0,0,.4),
+      0 2px 4px rgba(0,0,0,.9);
+}
+
+.arrow-left {
+   left: calc(50% - 90px);
+}
+
+.arrow-right {
+   left: calc(50% + 27px);
+}
+
+.arrow-left::before, .arrow-right::before {
+   position: absolute;
+   top: 10px;
+   display: inline-block;
+   content: "";
+   border: 11px solid transparent;
+}
+
+.arrow-left::before {
+   right: 14px;
+   border-right: 20px solid #004CA8;
+}
+
+.arrow-right::before {
+   left: 14px;
+   border-left: 20px solid #004CA8;
+}
+
+.back-to-operation {
+   position: absolute;
+   top: 30px;
+   left: 20px;
+   display: none;
+   width: 100px;
+   height: 50px;
+   border: 2px solid #25196C;
+   border-radius: 10px;
+}
+
+.back-to-operation p {
+   margin: 11px 10px 0px 35px;
+   font: normal 20px Kabel;
+   color: #25196C;
+   text-align: center;
+}
+
+.back-to-operation::before, .back-to-operation::after {
+   position: absolute;
+   left: 5px;
+   display: block;
+   width: 25px;
+   height: 10px;
+   content: "";
+   border-radius: 5px;
+   background-color: #25196C;
+}
+
+.back-to-operation::before {
+   top: 15px;
+   transform: rotate(-30deg);
+}
+
+.back-to-operation::after {
+   bottom: 13px;
+   transform: rotate(30deg);
+}
+
+#player {
+   position: absolute;
+   left: 50px;
+   bottom: 0;
+   display: none;
+   width: 100px;
+   height: 90px;
+   transform: translate(0, 0);
+   z-index: 10;
+   background-image: url('../img/Spongebob.png')
+}
+
+.player-message {
+   position: absolute;
+   display: inline-block;
+   width: 230px;
+   min-height: 50px;
+   padding: 10px;
+   
+   color: #FF0A0A;
+   font: 500 23px/30px "Hind Semibold";
+   border: 2px solid #00f;
+   border-radius: 30px;
+   background-color: #e4fbf9;
+}
+
+.player-message::before, .player-message::after {
+   position: absolute;
+   top: 100%;
+   content: "";
+   border: 20px solid transparent;
+     border-top: 35px solid #00f;
+}
+
+.player-message::after {
+   top: 97%;
+   border-top-color: #e4fbf9;
+}
+
+.left-message::before, .left-message::after {
+   border-right-width: 30px;
+   border-left-width: 5px;
+}
+
+.right-message::before, .right-message::after {
+   border-right-width: 5px;
+   border-left-width: 30px;
+}
+
+.left-message::before {
+   left: 30px;
+}
+
+.left-message::after {
+   left: 31px;
+}
+
+.right-message::before {
+   right: 30px;
+}
+
+.right-message::after {
+   right: 31px;
+}
+
+.patrick {
+   position: absolute;
+   top: 10px;
+   left: 25px;
+   width: 80px;
+   height: 90px;
+   display: none;
+   background-image: url('../img/Patrick.png');
+}
+
+.balloon {
+   position: absolute;
+   width: 75px;
+   height: 120px;
+   padding-top: 10px;
+   
+   font: 500 45px "Hind Semibold";
+   color: #000;
+   text-align: center;
+   border-radius: 35px;
+   background-image: url('../img/balloons.png');
+}
+
+.score {
+   float: right;
+   display: none;
+   width: 250px;
+   height: 80px;
+   font: 500 60px/80px "Hind Semibold";
+   color: #25196C;
+   letter-spacing: 0.09em;
+   border: 2px solid #2370a8;
+   border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+}
+
+.example {
+   display: none;
+   width: 500px;
+   height: 80px;
+   margin-left: 60px;
+   padding: 0 10px;
+   
+   font: 500 70px/90px "Hind Semibold";
+   color: #FF0A0A;
+   text-align: center;
+   border: 2px solid #00f;
+   border-radius: 15px;
+   background-color: #A7FBDA ;
+}
+
+.count {
+   position: absolute;
+   top: calc(50% - 50px);
+   left: calc(50% - 50px);
+   width: 100px;
+   height: 100px;
+   font: 600 100px/100px "Jokerman";
+}
+
+.explosion {
+   position: absolute;
+   width: 256px;
+   height: 256px;
+   border-radius: 40%;
+   background-image: url('../img/explosion.png');
+}
