@@ -8,11 +8,11 @@ let page = null;
 const showWiki = function(e) {
     image = document.createElement('div');
     image.classList.add('wiki-image');
-    image.style.width = field.clientWidth*80% + 'px';
-    image.style.height = field.clientHeight*80% + 'px';
     field.appendChild(image);
+    image.style.width = field.clientWidth*0.84 + 'px';
+    image.style.height = field.clientHeight*0.85 + 'px';
     image.style.backgroundImage = `url(./img/wiki/choose.png)`;
-    image.style.backgroundSize = '702% 101%';
+    image.style.backgroundSize = '701% 100%';
 
     leftArr = document.createElement('div');
     leftArr.classList.add('arrow-left');
@@ -25,7 +25,7 @@ const showWiki = function(e) {
     page = document.createElement('p');
     page.style.font = '400 22px Kabel';
     page.style.color = '#25196C';
-    page.style.marginTop = '3.8%';
+    page.style.marginTop = '29px';
     page.innerHTML = `${count+1}/7`;
     field.appendChild(page);
 
