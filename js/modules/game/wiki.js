@@ -33,7 +33,6 @@ const showWiki = function(e) {
     
 
     let button = backButton.cloneNode(true);
-
     field.appendChild(button);
     button.style.top = '90%'; 
     button.style.display = 'block';
