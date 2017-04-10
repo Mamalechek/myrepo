@@ -131,7 +131,7 @@ const showPlayerMessage = function(message, counting, span)  {
         let playerMessage = document.createElement('div');
         playerMessage.classList.add('player-message');
         playerMessage.innerHTML = message;
-        if(span) {
+        if(span != undefined) {
             playerMessage.appendChild(document.createElement('span'));
             playerMessage.lastChild.style.color = 'blue';
             playerMessage.lastChild.innerHTML = span;
