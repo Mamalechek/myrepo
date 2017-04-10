@@ -54,5 +54,21 @@ const backFunc = function() {
 }
 
 backButton.addEventListener('click', backFunc);
+
+const loadImg = function() {
+    let sources = [
+        './img/wiki/choose.png',
+        './img/field-bg.jpg',
+        './img/Spongebob.png',
+        './img/Patrick.png',
+        './img/explosion.png',
+        './img/balloons.png'
+    ];
+    let img = document.createElement('img');
+    for(let i = 0; i < sources.length; i++)
+        img.src = sources[i];
+}
+
+document.addEventListener('DOMContentLoaded', loadImg);
 mainFunc();
 
