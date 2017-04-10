@@ -72,6 +72,9 @@ const loadImg = function() {
     div.style.visibility = "hidden";
     document.body.appendChild(div);
     div.innerHTML = "<img src=\"" + sources.join("\" /><img src=\"") + "\" />";
+    let lastImg = div.lastChild;
+    lastImg.onload = function() { document.body.removeChild(div); };
+
 }
 
 document.addEventListener('DOMContentLoaded', loadImg);
