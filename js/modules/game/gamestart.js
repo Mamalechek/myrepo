@@ -101,10 +101,12 @@ const go = function(e) {
     for(let i = 0; i < buttons.length; i++)
         field.removeChild(buttons[i]);
     field.removeChild(field.firstChild);
+    
     let slider = document.querySelector('.slider');
     let thumb = document.querySelector('.thumb');
     let coord = Math.ceil((thumb.getBoundingClientRect().left - slider.getBoundingClientRect().left) / 70);
     speed.speed = coord ? coord : 1;
+    
     field.removeChild(slider);
     thumb = document.querySelector('.thumb');
     if(thumb)
