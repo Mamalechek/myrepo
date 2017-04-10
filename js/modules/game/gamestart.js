@@ -216,7 +216,7 @@ const changeSpeed = function(e) {
 }
 
 const moveThumbByClick = function(e) {
-    if(!e.target.closest('.slider') || !e.target.classList.contains('data-lower') || !e.target.classList.contains('data-faster'))
+    if(!e.target.closest('.slider') && !e.target.classList.contains('data-lower') && !e.target.classList.contains('data-faster'))
         return;
 
     let thumb = document.querySelector('.thumb');
