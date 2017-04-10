@@ -65,7 +65,7 @@ const showExample = function() {
                 break;
             case '*':
                 for(let i = 0; i < n; i++) {
-                    operands[i] = Math.round( Math.random() * max );
+                    operands[i] = Math.round( Math.random() * max + 1);
                     max = Math.floor(100 / operands[i])-1;
                 }
                 example =  `${operands[0]} &#215 ${operands[1]} = ...`;

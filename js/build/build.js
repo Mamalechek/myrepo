@@ -961,6 +961,7 @@ const gameOver = function(back) {
     delPlayerMessage(false);
     setTimeout( (back) => {
         player.style.display = 'none';
+        player.style.transform = `translate(0px, 0px) scale(1, 1)`;
         scoreField.style.display = 'none';
         if(!back) {
             let p = document.createElement('p');
@@ -1078,7 +1079,7 @@ const showExample = function() {
                 break;
             case '*':
                 for(let i = 0; i < n; i++) {
-                    operands[i] = Math.round( Math.random() * max );
+                    operands[i] = Math.round( Math.random() * max + 1);
                     max = Math.floor(100 / operands[i])-1;
                 }
                 example =  `${operands[0]} &#215 ${operands[1]} = ...`;

@@ -7,6 +7,7 @@ const gameOver = function(back) {
     delPlayerMessage(false);
     setTimeout( (back) => {
         player.style.display = 'none';
+        player.style.transform = `translate(0px, 0px) scale(1, 1)`;
         scoreField.style.display = 'none';
         if(!back) {
             let p = document.createElement('p');
