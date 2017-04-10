@@ -30,6 +30,7 @@ const showWiki = function(e) {
     page.style.position = 'absolute';
     page.style.left = 'calc(50% - 20px)';
     page.style.bottom = '37px';
+    
 
     let button = backButton.cloneNode(true);
 
