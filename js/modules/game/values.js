@@ -1,70 +1,73 @@
-let player = document.getElementById('player');
-let field = document.querySelector('.field');
-let fieldHeight = field.clientHeight;
-let fieldWidth = field.clientWidth;
-let startGameBut = document.querySelector('.start');
-let wikiBut = document.querySelector('.wiki');
-let exampleField = document.querySelector('.example');
-let scoreField = document.querySelector('.score');
-let patrick = document.querySelector('.patrick');
-let backButton = document.querySelector('.back-to-operation');
+const player = document.getElementById('player');
+const field = { node: document.querySelector('.field') };
+field.width = field.node.clientWidth;
+field.height = field.node.clientHeight;
+const startGameBut = document.querySelector('.start');
+const wikiBut = document.querySelector('.wiki');
+const exampleField = document.querySelector('.example');
+const scoreField = document.querySelector('.score');
+const patrick = document.querySelector('.patrick');
+const backButton = document.querySelector('.back-to-operation');
 
-let level = {num: 1};
-let operation = {sign: ''};
-let speed = {speed: 1};
+const level = { num: 1 };
+const operation = { sign: '' };
+const speed = { speed: 1 };
 
-const showLevel = function(lvl) {
-    let level = document.createElement('p');
-    level.classList.add('level','animated', 'flipInX');
-    level.textContent = `LEVEL ${lvl}`;
-    field.appendChild(level);
-    setTimeout( function() {
-        if(document.querySelector('.level'))
-            field.removeChild(level);
-    }, 1000 );
-}
+const showLevel = function (lvl) {
+    const lev = document.createElement('p');
+    lev.classList.add('level', 'animated', 'flipInX');
+    lev.textContent = `LEVEL ${lvl}`;
+    field.node.appendChild(lev);
+    setTimeout(() => {
+        if (document.querySelector('.level')) {
+            field.node.removeChild(lev);
+        }
+    }, 1000);
+};
 
 
-const count = function() {
-    let colors = ['red', 'yellow', 'green', 'orange', 'purple'];
+const count = function () {
+    const colors = ['red', 'yellow', 'green', 'orange', 'purple'];
     exampleField.style.display = 'inline-block';
     patrick.style.display = 'inline-block';
     player.style.backgroundPosition = '0px 0px';
-    
-    let countField = document.createElement('p');
+
+    const countField = document.createElement('p');
     countField.classList.add('count', 'animated', 'zoomIn', 'infinite');
-    field.appendChild(countField);
-    
+    field.node.appendChild(countField);
+
     function getColor() {
-        let colorIndex = Math.round(Math.random() * 5);
+        const colorIndex = Math.round(Math.random() * 5);
         countField.style.color = colors[colorIndex];
     }
 
-    setTimeout( (index) => {
+    setTimeout((index) => {
         getColor();
         countField.textContent = `${index}`;
-        setTimeout( (index) => {
+        setTimeout((index1) => {
             getColor();
-            countField.textContent = `${index}`;
-            setTimeout( (index) => {
+            countField.textContent = `${index1}`;
+            setTimeout((index2) => {
                 getColor();
-                countField.textContent = `${index}`;
+                countField.textContent = `${index2}`;
             }, 1020, 1);
         }, 1020, 2);
-    
     }, 0, 3);
 
-    setTimeout( () => {
-        field.removeChild(countField);
+    setTimeout(() => {
+        field.node.removeChild(countField);
     }, 3000);
-}
+};
 
+
+window.addEventListener('resize', () => {
+    field.height = field.node.clientHeight;
+    field.width = field.node.clientWidth;
+});
 
 module.exports = {
     player,
     field,
-    fieldHeight,
-    fieldWidth,
     startGameBut,
     wikiBut,
     exampleField,

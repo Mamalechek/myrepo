@@ -41,7 +41,9 @@ body {
    position: relative;
 
    width: 60%;
+   min-width: 900px;
    height: 95%;
+   min-height: 690px;
    margin: 0 auto;
    padding-top: 15px;
 
@@ -55,6 +57,17 @@ body {
 .field::after {
    content: "";
    clear: both;
+}
+
+.mute {
+   width: 70px;
+   height: 20px;
+   margin-left: calc(50% + 420px);
+   font: 600 15px "Kabel";
+}
+
+.mute input {
+   margin-top: 5px;
 }
 
 .game-button, .level, .operation, .restart {
@@ -313,7 +326,7 @@ body {
 .patrick {
    position: absolute;
    top: 10px;
-   left: 25px;
+   left: 20px;
    width: 80px;
    height: 90px;
    display: none;

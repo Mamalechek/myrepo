@@ -1,0 +1,32 @@
+{
+  "name": "myrepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "commonjs": true
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mamalechek/myrepo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mamalechek/myrepo/issues"
+  },
+  "homepage": "https://github.com/Mamalechek/myrepo#readme",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "webpack": "^2.3.3"
+  }
+}
