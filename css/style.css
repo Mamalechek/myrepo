@@ -62,8 +62,8 @@ body {
 .mute {
    width: 70px;
    height: 20px;
-   margin-left: calc(50% + 420px);
    font: 600 15px "Kabel";
+   display: none;
 }
 
 .mute input {

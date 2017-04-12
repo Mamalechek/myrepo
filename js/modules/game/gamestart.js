@@ -1,32 +1,16 @@
-const { field, startGameBut, wikiBut,
-        showLevel, operation, speed, backButton } = require('./values');
-const { addPlayer, showPlayerMessage } = require('../objects/player');
-const { showWiki } = require('./wiki');
+import { field, wikiBut,
+        showLevel, operation, speed, backButton } from './values';
+import { addPlayer, showPlayerMessage } from '../objects/player';
 
-const startGame = function (e) {
-    const target = e.target;
-    if (target === startGameBut) {
-        target.classList.remove('animated', 'pulse', 'infinite');
-        target.classList.add('animated', 'bounceOut');
-        setTimeout(() => {
-            field.node.removeChild(target);
-            field.node.removeChild(wikiBut);
-            document.getElementById('math').hidden = true;
-            chooseOperation();
-        }, 230);
-    } else
-    if (target === wikiBut) {
-        target.classList.add('animated', 'bounceOut');
-        setTimeout(() => {
-            target.classList.remove('animated', 'bounceOut');
-            wikiBut.hidden = true;
-            startGameBut.hidden = true;
-            document.getElementById('math').hidden = true;
-            showWiki();
-        }, 230);
-    }
-
-    return false;
+const startGame = function (target) {
+    target.classList.remove('animated', 'pulse', 'infinite');
+    target.classList.add('animated', 'bounceOut');
+    setTimeout(() => {
+        field.node.removeChild(target);
+        field.node.removeChild(wikiBut);
+        document.getElementById('math').hidden = true;
+        chooseOperation();
+    }, 230);
 };
 
 const chooseOperation = function () {
@@ -110,38 +94,41 @@ const go = function (e) {
         return;
     }
 
-    operation.sign = e.target.dataset.operation;
-    const buttons = document.querySelectorAll('.operation');
-    for (let i = 0; i < buttons.length; i++) {
-        field.node.removeChild(buttons[i]);
-    }
-    field.node.removeChild(field.node.firstChild);
-
-    const slider = document.querySelector('.slider');
-    let thumb = document.querySelector('.thumb');
-    const coord = Math.ceil((thumb.getBoundingClientRect().left -
-                                slider.getBoundingClientRect().left) / 70);
-    speed.speed = coord || 1;
-    field.node.removeChild(slider);
-    thumb = document.querySelector('.thumb');
-    if (thumb) {
-        document.body.removeChild(thumb);
-    }
-
-    for (let i = 0; i < 3; i++) {
-        field.node.removeChild(document.querySelector('.slider-legend'));
-    }
-    field.node.style.backgroundImage = 'url(./img/field-bg.jpg)';
-    document.querySelector('.score').style.display = 'inline-block';
-    addPlayer();
-    showPlayerMessage('HI! <br>' +
-        'Let\'s start learning! <br> Press any key to start. ;)', true);
+    e.target.classList.add('animated', 'bounceOut');
     setTimeout(() => {
-        showLevel(1);
-    }, 1000);
-    document.removeEventListener('click', moveThumbByClick);
-    document.removeEventListener('click', go);
-    backButton.style.display = 'block';
+        operation.sign = e.target.dataset.operation;
+        const buttons = document.querySelectorAll('.operation');
+        for (let i = 0; i < buttons.length; i++) {
+            field.node.removeChild(buttons[i]);
+        }
+        field.node.removeChild(field.node.firstChild);
+
+        const slider = document.querySelector('.slider');
+        let thumb = document.querySelector('.thumb');
+        const coord = Math.ceil((thumb.getBoundingClientRect().left -
+                                    slider.getBoundingClientRect().left) / 70);
+        speed.speed = coord || 1;
+        field.node.removeChild(slider);
+        thumb = document.querySelector('.thumb');
+        if (thumb) {
+            document.body.removeChild(thumb);
+        }
+
+        for (let i = 0; i < 3; i++) {
+            field.node.removeChild(document.querySelector('.slider-legend'));
+        }
+        field.node.style.backgroundImage = 'url(./img/field-bg.jpg)';
+        document.querySelector('.score').style.display = 'inline-block';
+        addPlayer();
+        showPlayerMessage('HI! <br>' +
+            'Let\'s start learning! <br> Press any key to start. ;)', true);
+        setTimeout(() => {
+            showLevel(1);
+        }, 1000);
+        document.removeEventListener('click', moveThumbByClick);
+        document.removeEventListener('click', go);
+        backButton.style.display = 'block';
+    }, 230);
 };
 
 const addSlider = function () {
@@ -308,34 +295,7 @@ const moveThumbByClick = function (e) {
     thumb.style.left = `${coordsThumb.left - parentRect.left}px`;
 };
 
-const loadImg = function () {
-    const sources = [
-        './img/kids-math-game.jpg',
-        './img/wiki/choose.png',
-        './img/field-bg.jpg',
-        './img/Spongebob.png',
-        './img/Patrick.png',
-        './img/explosion.png',
-        './img/balloons.png',
-    ];
-
-    const div = document.createElement('div');
-    div.style.position = 'absolute';
-    div.style.top = 0;
-    div.style.left = 0;
-    div.style.visibility = 'hidden';
-    document.body.appendChild(div);
-    div.innerHTML = `<img src="${sources.join('" /><img src="')}" />`;
-    const lastImg = div.lastChild;
-    lastImg.onload = function () { document.body.removeChild(div); };
-};
-
-document.addEventListener('DOMContentLoaded', loadImg);
-document.addEventListener('click', startGame);
-setTimeout(() => {
-    startGameBut.classList.add('animated', 'pulse', 'infinite');
-}, 3500);
-
-module.exports = {
+export {
+    startGame,
     chooseOperation,
 };

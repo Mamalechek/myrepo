@@ -1,8 +1,18 @@
+const path = require('path');
+
 module.exports = {
-    entry: "./modules/game/web_game",
+    entry: './modules/game/web_game',
     output: {
-        filename: "./build/build.js"    
+        path: path.join(__dirname, './build/'),
+        filename: 'build.js',
     },
     watch: true,
-    devtool: "source-map"
+    module: {
+        loaders: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+        }],
+    },
+    devtool: 'source-map',
 };

@@ -1,4 +1,4 @@
-const { scoreField } = require('../game/values');
+import { scoreField } from '../game/values';
 
 const count = { left: 0 };
 const changes = {};
@@ -36,7 +36,7 @@ const changeScore = function (change) {
     }
 };
 
-module.exports = {
+export {
     changeScore,
     score,
     changes,

@@ -1,4 +1,4 @@
-const { field, startGameBut, wikiBut, backButton } = require('./values');
+import { field, startGameBut, wikiBut, backButton } from './values';
 
 let count = 0;
 let image = null;
@@ -6,7 +6,18 @@ let rightArr = null;
 let leftArr = null;
 let page = null;
 
-const showWiki = function () {
+const showWiki = function (target) {
+    target.classList.add('animated', 'bounceOut');
+    setTimeout(() => {
+        target.classList.remove('animated', 'bounceOut');
+        wikiBut.hidden = true;
+        startGameBut.hidden = true;
+        document.getElementById('math').hidden = true;
+        renderWiki();
+    }, 230);
+};
+
+const renderWiki = function () {
     image = document.createElement('div');
     image.classList.add('wiki-image');
     field.node.appendChild(image);
@@ -100,6 +111,4 @@ const resizeImage = function () {
     imageToResize.style.height = `${field.node.clientHeight * 0.85}px`;
 };
 
-module.exports = {
-    showWiki,
-};
+export default showWiki;

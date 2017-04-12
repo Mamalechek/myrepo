@@ -1,7 +1,7 @@
-const { field, player, scoreField, backButton } = require('./values');
-const { delPlayerMessage } = require('../objects/player');
-const { chooseOperation } = require('./gamestart');
-const { score } = require('../objects/score');
+import { field, player, scoreField, backButton } from './values';
+import { delPlayerMessage } from '../objects/player';
+import { chooseOperation } from './gamestart';
+import { score } from '../objects/score';
 
 const gameOver = function (back) {
     delPlayerMessage(false);
@@ -49,6 +49,4 @@ const restartGame = function (e) {
     chooseOperation();
 };
 
-module.exports = {
-    gameOver,
-};
+export default gameOver;

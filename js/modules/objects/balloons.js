@@ -1,8 +1,8 @@
-const {
+import {
     field, exampleField, patrick, player, speed,
-} = require('../game/values');
-const { playerCoords, showPlayerMessage } = require('./player');
-const { changeScore, endOfGame } = require('./score');
+} from '../game/values';
+import { playerCoords, showPlayerMessage } from './player';
+import { changeScore, endOfGame } from './score';
 
 const balloons = [];
 let ballHeight = null;
@@ -275,7 +275,7 @@ const explode = function (selectBall, offset) {
     }, 1200);
 };
 
-module.exports = {
+export {
     createBalloons,
     balloons,
     ballOnField,

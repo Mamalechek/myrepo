@@ -1,4 +1,4 @@
-const { field, count, player, backButton } = require('../game/values');
+import { field, count, player, backButton } from '../game/values';
 
 const playerCoords = {};
 const pressedKeys = {};
@@ -192,7 +192,7 @@ const delPlayerMessage = function (mark) {
 };
 
 
-module.exports = {
+export {
     playerCoords,
     addPlayer,
     showPlayerMessage,

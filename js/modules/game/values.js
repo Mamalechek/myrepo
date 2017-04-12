@@ -63,9 +63,10 @@ const count = function () {
 window.addEventListener('resize', () => {
     field.height = field.node.clientHeight;
     field.width = field.node.clientWidth;
+    document.forms[0].style.marginLeft = `calc(50% + ${field.width / 2 - 60}px)`;
 });
 
-module.exports = {
+export {
     player,
     field,
     startGameBut,

@@ -1,4 +1,4 @@
-const { exampleField, operation, level } = require('../game/values');
+import { exampleField, operation, level } from '../game/values';
 
 let exampleInField = false;
 let answers = [];
@@ -109,7 +109,7 @@ const showExample = function () {
     exampleInField = true;
 };
 
-module.exports = {
+export {
     exampleField,
     startExample,
 };
