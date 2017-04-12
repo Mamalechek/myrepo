@@ -35,14 +35,6 @@ const mainFunc = function main() {
         setTimeout(gameOver, 2000);
     }
 
-    if (!audio && document.getElementById('audio')) {
-        audio = document.getElementById('audio');
-        document.forms[0].style.marginLeft = `calc(50% + ` +
-                                                `${(field.width / 2) - 60}px)`;
-        document.forms[0].style.display = 'block';
-        document.forms[0].elements[0].addEventListener('change', mute);
-    }
-
     requestAnimationFrame(main);
 };
 
@@ -72,7 +64,7 @@ const backFunc = function () {
     gameOver(true);
 };
 
-const loadImg = function () {
+const loadImgAudio = function () {
     const sources = [
         './img/kids-math-game.jpg',
         './img/wiki/choose.png',
@@ -92,6 +84,15 @@ const loadImg = function () {
     div.innerHTML = `<img src="${sources.join('" /><img src="')}" />`;
     const lastImg = div.lastChild;
     lastImg.onload = () => { document.body.removeChild(div); };
+
+    if (!audio && document.getElementById('audio')) {
+        audio = document.getElementById('audio');
+        document.forms[0].style.marginLeft = `calc(50% + ` +
+                                                `${(field.width / 2) - 60}px)`;
+        document.forms[0].style.display = 'block';
+        document.forms[0].elements[0].addEventListener('change', mute);
+    }
+
 };
 
 const mute = function (e) {
@@ -115,7 +116,7 @@ const start = function (e) {
     return false;
 };
 
-document.addEventListener('DOMContentLoaded', loadImg);
+document.addEventListener('DOMContentLoaded', loadImgAudio);
 document.addEventListener('click', start);
 setTimeout(() => {
     startGameBut.classList.add('animated', 'pulse', 'infinite');

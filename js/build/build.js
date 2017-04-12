@@ -71,18 +71,18 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return player; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return field; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return player; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return field; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return startGameBut; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return wikiBut; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return exampleField; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return scoreField; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return patrick; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return backButton; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return backButton; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return level; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return operation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return speed; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return showLevel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return showLevel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return count; });
 const player = document.getElementById('player');
 const field = { node: document.querySelector('.field') };
@@ -175,23 +175,23 @@ let leftBorder = null;
 let startCounting = false;
 
 const addPlayer = function () {
-    __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.backgroundPosition = '0px 0px';
-    __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.display = 'inline-block';
+    __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '0px 0px';
+    __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.display = 'inline-block';
     document.addEventListener('keydown', movePlayer);
     document.addEventListener('keyup', removeKey);
-    leftBorder = __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].width - __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].offsetWidth;
+    leftBorder = __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].width - __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].offsetWidth;
 
     window.addEventListener('resize', () => {
-        leftBorder = __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].width - __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].offsetWidth;
+        leftBorder = __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].width - __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].offsetWidth;
     });
     getPlayerCoords();
 };
 
 const getPlayerCoords = function () {
-    playerCoords.top = __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].offsetTop;
-    playerCoords.left = __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].offsetLeft;
-    playerCoords.height = __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].offsetHeight;
-    playerCoords.width = __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].offsetWidth;
+    playerCoords.top = __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].offsetTop;
+    playerCoords.left = __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].offsetLeft;
+    playerCoords.height = __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].offsetHeight;
+    playerCoords.width = __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].offsetWidth;
 };
 
 const movePlayer = function (e) {
@@ -220,30 +220,30 @@ const movePlayer = function (e) {
 const removeKey = function (e) {
     if (e.keyCode in pressedKeys) {
         delete pressedKeys[e.keyCode];
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.backgroundPosition = '0px 0px';
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '0px 0px';
     }
 };
 
 const moveRight = function () {
-    const matrix = getComputedStyle(__WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */]).transform;
+    const matrix = getComputedStyle(__WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */]).transform;
     const leftMove = parseInt(matrix.split(',')[4], 10) + 5;
     const upPos = parseInt(matrix.split(',')[5], 10);
     if (playerCoords.left <= leftBorder) {
         const trans = `translate(${leftMove}px, ${upPos}px) scale(1, 1)`;
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.transform = trans;
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.backgroundPosition = '-100px 0px';
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.transform = trans;
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '-100px 0px';
         playerCoords.left += 5;
     }
 };
 
 const moveLeft = function () {
-    const matrix = getComputedStyle(__WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */]).transform;
+    const matrix = getComputedStyle(__WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */]).transform;
     const rightMove = parseInt(matrix.split(',')[4], 10) - 5;
     const upPos = parseInt(matrix.split(',')[5], 10);
     if (playerCoords.left >= 0) {
         const trans = `translate(${rightMove}px, ${upPos}px) scale(-1, 1)`;
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.transform = trans;
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.backgroundPosition = '-100px 0px';
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.transform = trans;
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '-100px 0px';
         playerCoords.left -= 5;
     }
 };
@@ -255,7 +255,7 @@ const playerJump = function jump() {
         moveLeft();
     }
 
-    const matrix = getComputedStyle(__WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */]).transform;
+    const matrix = getComputedStyle(__WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */]).transform;
     let scale = matrix.split(',')[0];
     if (scale.indexOf('-') === -1) {
         scale = parseInt(scale.slice(-1), 10);
@@ -265,7 +265,7 @@ const playerJump = function jump() {
 
     const leftPos = parseInt(matrix.split(',')[4], 10);
 
-    if (jumpHeight.height < __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].height * 0.25 && jumpUp) {
+    if (jumpHeight.height < __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].height * 0.25 && jumpUp) {
         jumpHeight.height += 3;
         playerCoords.top -= 3;
     } else {
@@ -274,7 +274,7 @@ const playerJump = function jump() {
         jumpUp = false;
     }
 
-    __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.transform = `translate(${leftPos}px,` + `-${jumpHeight.height}px) scale(${scale}, 1)`;
+    __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.transform = `translate(${leftPos}px,` + `-${jumpHeight.height}px) scale(${scale}, 1)`;
 
     if (jumpHeight.height <= 0) {
         jumpUp = true;
@@ -313,7 +313,7 @@ const showPlayerMessage = function (message, counting, span) {
             playerMessage.style.left = `${playerCoords.left - 180}px`;
         }
 
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].node.appendChild(playerMessage);
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].node.appendChild(playerMessage);
         const top = playerCoords.top - playerMessage.offsetHeight - 70;
         playerMessage.style.top = `${top}px`;
         document.addEventListener('keydown', delPlayerMessage);
@@ -327,24 +327,24 @@ const showPlayerMessage = function (message, counting, span) {
     }
 
     if (startCounting) {
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* backButton */].style.display = 'block';
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* backButton */].style.display = 'block';
     }
 };
 
 const delPlayerMessage = function (mark) {
-    const playerMessage = __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].node.querySelector('.player-message');
+    const playerMessage = __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].node.querySelector('.player-message');
     if (playerMessage) {
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].node.removeChild(playerMessage);
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].node.removeChild(playerMessage);
         document.removeEventListener('keydown', delPlayerMessage);
         document.removeEventListener('click', delPlayerMessage);
 
         if (mark !== false) {
-            __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.backgroundPosition = '0px 0px';
+            __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '0px 0px';
         }
 
         if (startCounting && mark !== false) {
             startCounting = false;
-            __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* backButton */].style.display = 'none';
+            __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* backButton */].style.display = 'none';
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__game_values__["j" /* count */])();
         }
     }
@@ -417,8 +417,8 @@ const startGame = function (target) {
     target.classList.remove('animated', 'pulse', 'infinite');
     target.classList.add('animated', 'bounceOut');
     setTimeout(() => {
-        __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(target);
-        __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(__WEBPACK_IMPORTED_MODULE_0__values__["g" /* wikiBut */]);
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(target);
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(__WEBPACK_IMPORTED_MODULE_0__values__["g" /* wikiBut */]);
         document.getElementById('math').hidden = true;
         chooseOperation();
     }, 230);
@@ -428,7 +428,7 @@ const chooseOperation = function () {
     const p = document.createElement('p');
     p.classList.add('other');
     p.textContent = 'Choose the operation:';
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.insertBefore(p, __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.firstChild);
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.insertBefore(p, __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.firstChild);
     p.style.font = '900 50px Kabel';
     p.style.color = '#25196C';
     p.style.top = '3.5%';
@@ -485,7 +485,7 @@ const chooseOperation = function () {
             default:
                 break;
         }
-        __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(button);
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(button);
         button.classList.add('animated', 'bounceInRight');
         button.style.top = `${button.offsetTop + (button.offsetHeight + 15) * i}px`;
         button.addEventListener('mouseover', e => {
@@ -514,33 +514,33 @@ const go = function (e) {
         __WEBPACK_IMPORTED_MODULE_0__values__["h" /* operation */].sign = e.target.dataset.operation;
         const buttons = document.querySelectorAll('.operation');
         for (let i = 0; i < buttons.length; i++) {
-            __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(buttons[i]);
+            __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(buttons[i]);
         }
-        __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(__WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.firstChild);
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(__WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.firstChild);
 
         const slider = document.querySelector('.slider');
         let thumb = document.querySelector('.thumb');
         const coord = Math.ceil((thumb.getBoundingClientRect().left - slider.getBoundingClientRect().left) / 70);
         __WEBPACK_IMPORTED_MODULE_0__values__["i" /* speed */].speed = coord || 1;
-        __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(slider);
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(slider);
         thumb = document.querySelector('.thumb');
         if (thumb) {
             document.body.removeChild(thumb);
         }
 
         for (let i = 0; i < 3; i++) {
-            __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(document.querySelector('.slider-legend'));
+            __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(document.querySelector('.slider-legend'));
         }
-        __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.style.backgroundImage = 'url(./img/field-bg.jpg)';
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.style.backgroundImage = 'url(./img/field-bg.jpg)';
         document.querySelector('.score').style.display = 'inline-block';
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__objects_player__["d" /* addPlayer */])();
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__objects_player__["a" /* showPlayerMessage */])('HI! <br>' + 'Let\'s start learning! <br> Press any key to start. ;)', true);
         setTimeout(() => {
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__values__["c" /* showLevel */])(1);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__values__["b" /* showLevel */])(1);
         }, 1000);
         document.removeEventListener('click', moveThumbByClick);
         document.removeEventListener('click', go);
-        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* backButton */].style.display = 'block';
+        __WEBPACK_IMPORTED_MODULE_0__values__["d" /* backButton */].style.display = 'block';
     }, 230);
 };
 
@@ -549,20 +549,20 @@ const addSlider = function () {
     slider.classList.add('slider');
     const thumb = document.createElement('div');
     thumb.classList.add('thumb');
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(slider);
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(slider);
     slider.appendChild(thumb);
 
     let p = document.createElement('p');
     p.classList.add('slider-legend');
     p.textContent = 'Game speed';
     p.style.cursor = 'default';
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(p);
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(p);
     p.style.bottom = '15px';
 
     p = document.createElement('p');
     p.classList.add('slider-legend', 'data-lower');
     p.textContent = 'lower';
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(p);
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(p);
     p.style.fontSize = '15px';
     p.style.width = '62px';
     p.style.left = '31.2%';
@@ -571,7 +571,7 @@ const addSlider = function () {
     p = document.createElement('p');
     p.classList.add('slider-legend', 'data-faster');
     p.textContent = 'faster';
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(p);
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(p);
     p.style.fontSize = '15px';
     p.style.width = '68px';
     p.style.left = '62.5%';
@@ -707,14 +707,14 @@ const moveThumbByClick = function (e) {
 const gameOver = function (back) {
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__objects_player__["f" /* delPlayerMessage */])(false);
     setTimeout(backBut => {
-        __WEBPACK_IMPORTED_MODULE_0__values__["d" /* player */].style.display = 'none';
-        __WEBPACK_IMPORTED_MODULE_0__values__["d" /* player */].style.transform = `translate(0px, 0px) scale(1, 1)`;
+        __WEBPACK_IMPORTED_MODULE_0__values__["c" /* player */].style.display = 'none';
+        __WEBPACK_IMPORTED_MODULE_0__values__["c" /* player */].style.transform = `translate(0px, 0px) scale(1, 1)`;
         __WEBPACK_IMPORTED_MODULE_0__values__["k" /* scoreField */].style.display = 'none';
         if (!backBut) {
             const p = document.createElement('p');
             p.classList.add('level');
             p.innerHTML = 'GAME OVER';
-            __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(p);
+            __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(p);
             p.style.font = '900 70px Kabel';
             p.style.top = `${p.offsetTop - 100}px`;
             p.style.cursor = 'default';
@@ -722,16 +722,16 @@ const gameOver = function (back) {
             const restart = document.createElement('div');
             restart.classList.add('restart');
             restart.textContent = 'Press to restart';
-            __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(restart);
+            __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(restart);
             restart.addEventListener('click', restartGame);
         } else {
             const lvl = document.querySelector('.level');
             if (lvl) {
-                __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(lvl);
+                __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(lvl);
             }
-            __WEBPACK_IMPORTED_MODULE_0__values__["e" /* backButton */].classList.remove('animated', 'bounceOut');
-            __WEBPACK_IMPORTED_MODULE_0__values__["e" /* backButton */].style.display = 'none';
-            __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.style.backgroundImage = '';
+            __WEBPACK_IMPORTED_MODULE_0__values__["d" /* backButton */].classList.remove('animated', 'bounceOut');
+            __WEBPACK_IMPORTED_MODULE_0__values__["d" /* backButton */].style.display = 'none';
+            __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.style.backgroundImage = '';
             __WEBPACK_IMPORTED_MODULE_3__objects_score__["b" /* score */].curScore = 0;
             __WEBPACK_IMPORTED_MODULE_0__values__["a" /* level */].num = 1;
             __WEBPACK_IMPORTED_MODULE_0__values__["k" /* scoreField */].textContent = '000';
@@ -745,9 +745,9 @@ const restartGame = function (e) {
         return;
     }
 
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(e.target);
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(document.querySelector('.level'));
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.style.backgroundImage = '';
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(e.target);
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(document.querySelector('.level'));
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.style.backgroundImage = '';
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__gamestart__["b" /* chooseOperation */])();
 };
 
@@ -781,31 +781,31 @@ const showWiki = function (target) {
 const renderWiki = function () {
     image = document.createElement('div');
     image.classList.add('wiki-image');
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(image);
-    image.style.width = `${__WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.clientWidth * 0.84}px`;
-    image.style.height = `${__WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.clientHeight * 0.85}px`;
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(image);
+    image.style.width = `${__WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.clientWidth * 0.84}px`;
+    image.style.height = `${__WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.clientHeight * 0.85}px`;
     image.style.backgroundImage = `url(./img/wiki/choose.png)`;
     image.style.backgroundSize = '701.5% 100%';
 
     leftArr = document.createElement('div');
     leftArr.classList.add('arrow-left');
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(leftArr);
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(leftArr);
 
     rightArr = document.createElement('div');
     rightArr.classList.add('arrow-right');
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(rightArr);
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(rightArr);
 
     page = document.createElement('p');
     page.style.font = '400 22px Kabel';
     page.style.color = '#25196C';
     page.innerHTML = `${count + 1}/7`;
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(page);
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(page);
     page.style.position = 'absolute';
     page.style.left = 'calc(50% - 20px)';
     page.style.bottom = '37px';
 
-    const button = __WEBPACK_IMPORTED_MODULE_0__values__["e" /* backButton */].cloneNode(true);
-    __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(button);
+    const button = __WEBPACK_IMPORTED_MODULE_0__values__["d" /* backButton */].cloneNode(true);
+    __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.appendChild(button);
     button.style.top = '90%';
     button.style.display = 'block';
 
@@ -847,11 +847,11 @@ const backToStart = function (e) {
     target.classList.add('animated', 'bounceOut');
     setTimeout(() => {
         window.removeEventListener('resize', resizeImage);
-        __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(image);
-        __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(leftArr);
-        __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(rightArr);
-        __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(page);
-        __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(target);
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(image);
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(leftArr);
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(rightArr);
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(page);
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(target);
         image = null;
         leftArr = null;
         rightArr = null;
@@ -866,8 +866,8 @@ const backToStart = function (e) {
 
 const resizeImage = function () {
     const imageToResize = document.querySelector('.wiki-image');
-    imageToResize.style.width = `${__WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.clientWidth * 0.84}px`;
-    imageToResize.style.height = `${__WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.clientHeight * 0.85}px`;
+    imageToResize.style.width = `${__WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.clientWidth * 0.84}px`;
+    imageToResize.style.height = `${__WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.clientHeight * 0.85}px`;
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (showWiki);
@@ -898,7 +898,7 @@ const mix = [0, -12, 11, 0, -11, 0, -9, 0, 12, 0, -8, 0, 13, 9, 0, -12, 0, 8, 0,
 
 const createBalloons = function (answers) {
     const n = 3;
-    if (!__WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].node.querySelector('.balloon')) {
+    if (!__WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].node.querySelector('.balloon')) {
         for (let i = 0; i < n; i++) {
             balloons[i] = {};
             balloons[i].elem = document.createElement('div');
@@ -946,7 +946,7 @@ const animateBalloons = function () {
             balloons[i].elem.style.transform = `translate(0, ${down}px)` + `rotate(${angle}deg)`;
         }
 
-        if (down + ballHeight >= __WEBPACK_IMPORTED_MODULE_1__player__["e" /* playerCoords */].top - __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].height * 0.25) {
+        if (down + ballHeight >= __WEBPACK_IMPORTED_MODULE_1__player__["e" /* playerCoords */].top - __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].height * 0.25) {
             let select = null;
             for (let i = 0; i < balloons.length; i++) {
                 select = playerChooseBall({
@@ -975,10 +975,10 @@ const animateBalloons = function () {
 };
 
 const addBalloons = function () {
-    let minTop = __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].height;
+    let minTop = __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].height;
     const ballColors = [];
     for (let i = 0; i < balloons.length; i++) {
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].node.appendChild(balloons[i].elem);
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].node.appendChild(balloons[i].elem);
 
         let flag = false;
         let color = null;
@@ -994,7 +994,7 @@ const addBalloons = function () {
         balloons[i].width = balloons[i].elem.offsetWidth;
         balloons[i].height = balloons[i].elem.offsetHeight;
         balloons[i].top = Math.random() * 55 + 45;
-        balloons[i].left = Math.random() * (__WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].width - balloons[i].width);
+        balloons[i].left = Math.random() * (__WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].width - balloons[i].width);
         balloons[i].angle = 0;
         balloons[i].moveTo = balloons[i].angle;
 
@@ -1003,7 +1003,7 @@ const addBalloons = function () {
         while (j < i) {
             let mark = false;
             while (Math.abs(balloons[j].left - balloons[i].left) < 100) {
-                balloons[i].left = Math.random() * (__WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].width - balloons[i].width);
+                balloons[i].left = Math.random() * (__WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].width - balloons[i].width);
                 mark = true;
             }
             j++;
@@ -1018,7 +1018,7 @@ const addBalloons = function () {
         }
     }
 
-    bottomBorder = __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].height - minTop;
+    bottomBorder = __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].height - minTop;
     ballHeight = balloons[0].elem.offsetHeight;
     ballOnField.on = true;
     document.addEventListener('click', selectBalloon);
@@ -1062,7 +1062,7 @@ const removeBalloons = function (selectBall) {
         if (selectBall && balloons[i] === selectBall) {
             checkSelection(selectBall, num);
         }
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].node.removeChild(balloons[i].elem);
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].node.removeChild(balloons[i].elem);
         balloons[i] = null;
     }
 
@@ -1085,29 +1085,29 @@ const checkSelection = function (selectBall, num) {
     if (selectBall === balloons[0]) {
         explode(selectBall, 0);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__score__["d" /* changeScore */])(100);
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.backgroundPosition = '-200px 0px';
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '-200px 0px';
         __WEBPACK_IMPORTED_MODULE_0__game_values__["l" /* patrick */].style.backgroundPosition = '-80px 0px';
         setTimeout(() => {
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__player__["a" /* showPlayerMessage */])('You\'re genius! :)', true);
-            __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.backgroundPosition = '0px 0px';
+            __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '0px 0px';
         }, 1000);
     } else {
         if (selectBall) {
             explode(selectBall, 1);
         }
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__score__["d" /* changeScore */])(-50);
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.backgroundPosition = '-300px 0px';
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '-300px 0px';
         __WEBPACK_IMPORTED_MODULE_0__game_values__["l" /* patrick */].style.backgroundPosition = '-160px 0px';
         if (!__WEBPACK_IMPORTED_MODULE_2__score__["a" /* endOfGame */].end) {
             if (selectBall) {
                 setTimeout(() => {
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__player__["a" /* showPlayerMessage */])(`Think better! <br> It's `, true, num);
-                    __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.backgroundPosition = '0px 0px';
+                    __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '0px 0px';
                 }, 1000);
             } else {
                 setTimeout(() => {
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__player__["a" /* showPlayerMessage */])('Hurry up, my Friend!', true, num);
-                    __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* player */].style.backgroundPosition = '0px 0px';
+                    __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '0px 0px';
                 }, 1000);
             }
         } else {
@@ -1128,23 +1128,23 @@ const explode = function (selectBall, offset) {
 
     if (left < 0) {
         explosion.style.left = 0;
-    } else if (left + 256 > __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].width) {
-        explosion.style.left = `${__WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].width - 256}px`;
+    } else if (left + 256 > __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].width) {
+        explosion.style.left = `${__WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].width - 256}px`;
     } else {
         explosion.style.left = `${left}px`;
     }
 
-    if (top + 256 > __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].height) {
-        explosion.style.top = `${__WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].height - 256}px`;
+    if (top + 256 > __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].height) {
+        explosion.style.top = `${__WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].height - 256}px`;
     } else if (top < 0) {
         explosion.style.top = 0;
     } else {
         explosion.style.top = `${top}px`;
     }
 
-    __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].node.appendChild(explosion);
+    __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].node.appendChild(explosion);
     setTimeout(() => {
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["b" /* field */].node.removeChild(explosion);
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].node.removeChild(explosion);
     }, 1200);
 };
 
@@ -1313,20 +1313,13 @@ const mainFunc = function main() {
         setTimeout(__WEBPACK_IMPORTED_MODULE_6__gameover__["a" /* default */], 2000);
     }
 
-    if (!audio && document.getElementById('audio')) {
-        audio = document.getElementById('audio');
-        document.forms[0].style.marginLeft = `calc(50% + ` + `${__WEBPACK_IMPORTED_MODULE_4__values__["b" /* field */].width / 2 - 60}px)`;
-        document.forms[0].style.display = 'block';
-        document.forms[0].elements[0].addEventListener('change', mute);
-    }
-
     requestAnimationFrame(main);
 };
 
 const levelUp = function () {
     __WEBPACK_IMPORTED_MODULE_4__values__["a" /* level */].num = Math.floor(__WEBPACK_IMPORTED_MODULE_3__objects_score__["b" /* score */].curScore / 1000) + 1;
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__values__["c" /* showLevel */])(__WEBPACK_IMPORTED_MODULE_4__values__["a" /* level */].num);
-    __WEBPACK_IMPORTED_MODULE_4__values__["d" /* player */].style.backgroundPosition = '-400px 0px';
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__values__["b" /* showLevel */])(__WEBPACK_IMPORTED_MODULE_4__values__["a" /* level */].num);
+    __WEBPACK_IMPORTED_MODULE_4__values__["c" /* player */].style.backgroundPosition = '-400px 0px';
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__objects_player__["a" /* showPlayerMessage */])('HEY-HEY! <br> Wonderfu-u-ul! <br> Level UP!');
 };
 
@@ -1345,11 +1338,11 @@ const render = function () {
 };
 
 const backFunc = function () {
-    __WEBPACK_IMPORTED_MODULE_4__values__["e" /* backButton */].classList.add('animated', 'bounceOut');
+    __WEBPACK_IMPORTED_MODULE_4__values__["d" /* backButton */].classList.add('animated', 'bounceOut');
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__gameover__["a" /* default */])(true);
 };
 
-const loadImg = function () {
+const loadImgAudio = function () {
     const sources = ['./img/kids-math-game.jpg', './img/wiki/choose.png', './img/field-bg.jpg', './img/Spongebob.png', './img/Patrick.png', './img/explosion.png', './img/balloons.png'];
 
     const div = document.createElement('div');
@@ -1363,6 +1356,13 @@ const loadImg = function () {
     lastImg.onload = () => {
         document.body.removeChild(div);
     };
+
+    if (!audio && document.getElementById('audio')) {
+        audio = document.getElementById('audio');
+        document.forms[0].style.marginLeft = `calc(50% + ` + `${__WEBPACK_IMPORTED_MODULE_4__values__["e" /* field */].width / 2 - 60}px)`;
+        document.forms[0].style.display = 'block';
+        document.forms[0].elements[0].addEventListener('change', mute);
+    }
 };
 
 const mute = function (e) {
@@ -1385,13 +1385,13 @@ const start = function (e) {
     return false;
 };
 
-document.addEventListener('DOMContentLoaded', loadImg);
+document.addEventListener('DOMContentLoaded', loadImgAudio);
 document.addEventListener('click', start);
 setTimeout(() => {
     __WEBPACK_IMPORTED_MODULE_4__values__["f" /* startGameBut */].classList.add('animated', 'pulse', 'infinite');
 }, 3500);
 
-__WEBPACK_IMPORTED_MODULE_4__values__["e" /* backButton */].addEventListener('click', backFunc);
+__WEBPACK_IMPORTED_MODULE_4__values__["d" /* backButton */].addEventListener('click', backFunc);
 
 mainFunc();
 
