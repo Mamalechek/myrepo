@@ -15,7 +15,7 @@ const startGame = function (target) {
 
 const chooseOperation = function () {
     const p = document.createElement('p');
-    p.classList.add('level');
+    p.classList.add('other');
     p.textContent = 'Choose the operation:';
     field.node.insertBefore(p, field.node.firstChild);
     p.style.font = '900 50px Kabel';

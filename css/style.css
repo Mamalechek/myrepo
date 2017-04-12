@@ -70,7 +70,7 @@ body {
    margin-top: 5px;
 }
 
-.game-button, .level, .operation, .restart {
+.game-button, .level, .other, .operation, .restart {
    position: absolute;
    top: calc(50% - 50px);
    left: calc(50% - 300px);
@@ -96,7 +96,7 @@ body {
    background-color: orange;
 }
 
-.level {
+.level, .other {
    width: 900px;
    left: calc(50% - 450px);
    font-size: 90px;

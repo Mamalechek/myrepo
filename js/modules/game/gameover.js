@@ -1,4 +1,4 @@
-import { field, player, scoreField, backButton } from './values';
+import { field, player, level, scoreField, backButton } from './values';
 import { delPlayerMessage } from '../objects/player';
 import { chooseOperation } from './gamestart';
 import { score } from '../objects/score';
@@ -24,14 +24,15 @@ const gameOver = function (back) {
             field.node.appendChild(restart);
             restart.addEventListener('click', restartGame);
         } else {
-            const level = document.querySelector('.level');
-            if (level) {
-                field.node.removeChild(level);
+            const lvl = document.querySelector('.level');
+            if (lvl) {
+                field.node.removeChild(lvl);
             }
             backButton.classList.remove('animated', 'bounceOut');
             backButton.style.display = 'none';
             field.node.style.backgroundImage = '';
             score.curScore = 0;
+            level.num = 1;
             scoreField.textContent = '000';
             chooseOperation();
         }

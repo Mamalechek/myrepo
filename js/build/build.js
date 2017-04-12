@@ -426,7 +426,7 @@ const startGame = function (target) {
 
 const chooseOperation = function () {
     const p = document.createElement('p');
-    p.classList.add('level');
+    p.classList.add('other');
     p.textContent = 'Choose the operation:';
     __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.insertBefore(p, __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.firstChild);
     p.style.font = '900 50px Kabel';
@@ -725,14 +725,15 @@ const gameOver = function (back) {
             __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.appendChild(restart);
             restart.addEventListener('click', restartGame);
         } else {
-            const level = document.querySelector('.level');
-            if (level) {
-                __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(level);
+            const lvl = document.querySelector('.level');
+            if (lvl) {
+                __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.removeChild(lvl);
             }
             __WEBPACK_IMPORTED_MODULE_0__values__["e" /* backButton */].classList.remove('animated', 'bounceOut');
             __WEBPACK_IMPORTED_MODULE_0__values__["e" /* backButton */].style.display = 'none';
             __WEBPACK_IMPORTED_MODULE_0__values__["b" /* field */].node.style.backgroundImage = '';
             __WEBPACK_IMPORTED_MODULE_3__objects_score__["b" /* score */].curScore = 0;
+            __WEBPACK_IMPORTED_MODULE_0__values__["a" /* level */].num = 1;
             __WEBPACK_IMPORTED_MODULE_0__values__["k" /* scoreField */].textContent = '000';
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__gamestart__["b" /* chooseOperation */])();
         }
