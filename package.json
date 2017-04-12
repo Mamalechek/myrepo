@@ -13,16 +13,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mamalechek/myrepo.git"
-  },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Mamalechek/myrepo/issues"
-  },
-  "homepage": "https://github.com/Mamalechek/myrepo#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
@@ -33,3 +24,4 @@
     "webpack": "^2.3.3"
   }
 }
+
