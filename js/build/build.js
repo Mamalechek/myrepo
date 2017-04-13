@@ -862,6 +862,7 @@ const backToStart = function (e) {
 
     document.removeEventListener('click', changePage);
     document.removeEventListener('click', backToStart);
+    window.removeEventListener('resize', resizeImage);
 };
 
 const resizeImage = function () {

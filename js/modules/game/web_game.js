@@ -92,7 +92,6 @@ const loadImgAudio = function () {
         document.forms[0].style.display = 'block';
         document.forms[0].elements[0].addEventListener('change', mute);
     }
-
 };
 
 const mute = function (e) {
