@@ -5,7 +5,7 @@ import {
 import { startExample } from '../objects/examples';
 import { score, endOfGame, count, changeScore } from '../objects/score';
 import {
-    startGameBut, wikiBut, field, showLevel, level, player, backButton,
+    startGameBut, wikiBut, field, showLevel, level, player, backButton, sound,
 } from './values';
 import {
     createBalloons, ballOnField, animateBalloons,
@@ -97,8 +97,10 @@ const loadImgAudio = function () {
 const mute = function (e) {
     if (e.target.checked) {
         audio.play();
+        sound.on = true;
     } else {
         audio.pause();
+        sound.on = false;
     }
 };
 

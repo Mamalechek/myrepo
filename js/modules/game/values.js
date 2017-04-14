@@ -8,6 +8,7 @@ const exampleField = document.querySelector('.example');
 const scoreField = document.querySelector('.score');
 const patrick = document.querySelector('.patrick');
 const backButton = document.querySelector('.back-to-operation');
+const sound = { on: true };
 
 const level = { num: 1 };
 const operation = { sign: '' };
@@ -80,4 +81,5 @@ export {
     speed,
     showLevel,
     count,
+    sound,
 };

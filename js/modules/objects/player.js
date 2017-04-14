@@ -1,4 +1,4 @@
-import { field, count, player, backButton } from '../game/values';
+import { field, count, player, backButton, sound } from '../game/values';
 
 const playerCoords = {};
 const pressedKeys = {};
@@ -42,6 +42,10 @@ const movePlayer = function (e) {
 
     if (key === 38 || key === 87 || (pressedKeys['38'] || pressedKeys['87'])) {
         if (!playerInJump) {
+            if (sound.on) {
+                const audio = new Audio('./audio/player-jump.ogg');
+                audio.play();
+            }
             playerInJump = true;
             playerJump();
         }

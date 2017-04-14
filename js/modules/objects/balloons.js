@@ -1,5 +1,5 @@
 import {
-    field, exampleField, patrick, player, speed,
+    field, exampleField, patrick, player, speed, sound
 } from '../game/values';
 import { playerCoords, showPlayerMessage } from './player';
 import { changeScore, endOfGame } from './score';
@@ -185,6 +185,10 @@ const removeBalloons = function (selectBall) {
     const num = parseInt(balloons[0].elem.innerHTML, 10);
     for (let i = 0; i < balloons.length; i++) {
         if (selectBall && balloons[i] === selectBall) {
+            if (sound.on) {
+                const audio = new Audio('./audio/balloon-pop.ogg');
+                audio.play();
+            }
             checkSelection(selectBall, num);
         }
         field.node.removeChild(balloons[i].elem);

@@ -73,17 +73,18 @@
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return player; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return field; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return startGameBut; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return wikiBut; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return exampleField; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return scoreField; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return patrick; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return startGameBut; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return wikiBut; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return exampleField; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return scoreField; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return patrick; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return backButton; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return level; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return operation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return speed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return operation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return speed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return showLevel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return count; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return count; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return sound; });
 const player = document.getElementById('player');
 const field = { node: document.querySelector('.field') };
 field.width = field.node.clientWidth;
@@ -94,6 +95,7 @@ const exampleField = document.querySelector('.example');
 const scoreField = document.querySelector('.score');
 const patrick = document.querySelector('.patrick');
 const backButton = document.querySelector('.back-to-operation');
+const sound = { on: true };
 
 const level = { num: 1 };
 const operation = { sign: '' };
@@ -207,6 +209,10 @@ const movePlayer = function (e) {
 
     if (key === 38 || key === 87 || pressedKeys['38'] || pressedKeys['87']) {
         if (!playerInJump) {
+            if (__WEBPACK_IMPORTED_MODULE_0__game_values__["f" /* sound */].on) {
+                const audio = new Audio('./audio/player-jump.ogg');
+                audio.play();
+            }
             playerInJump = true;
             playerJump();
         }
@@ -345,7 +351,7 @@ const delPlayerMessage = function (mark) {
         if (startCounting && mark !== false) {
             startCounting = false;
             __WEBPACK_IMPORTED_MODULE_0__game_values__["d" /* backButton */].style.display = 'none';
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__game_values__["j" /* count */])();
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__game_values__["k" /* count */])();
         }
     }
 };
@@ -368,7 +374,7 @@ const delPlayerMessage = function (mark) {
 const count = { left: 0 };
 const changes = {};
 const endOfGame = { end: false };
-const score = { curScore: parseInt(__WEBPACK_IMPORTED_MODULE_0__game_values__["k" /* scoreField */].textContent, 10) };
+const score = { curScore: parseInt(__WEBPACK_IMPORTED_MODULE_0__game_values__["l" /* scoreField */].textContent, 10) };
 
 const changeScore = function (change) {
     if (!Object.keys(changes).length) {
@@ -377,7 +383,7 @@ const changeScore = function (change) {
     }
 
     if (changes.curScore + changes.change >= 0) {
-        const style = getComputedStyle(__WEBPACK_IMPORTED_MODULE_0__game_values__["k" /* scoreField */]);
+        const style = getComputedStyle(__WEBPACK_IMPORTED_MODULE_0__game_values__["l" /* scoreField */]);
         if (style.display !== 'none') {
             if (count.left === changes.change || !changes.change) {
                 count.left = 0;
@@ -387,7 +393,7 @@ const changeScore = function (change) {
                 score.curScore = changes.curScore + count.left + changes.change / Math.abs(changes.change);
                 const scoreLength = score.curScore.toString(10).length;
                 const times = Math.max(3 - scoreLength, 0);
-                __WEBPACK_IMPORTED_MODULE_0__game_values__["k" /* scoreField */].textContent = '0'.repeat(times) + score.curScore;
+                __WEBPACK_IMPORTED_MODULE_0__game_values__["l" /* scoreField */].textContent = '0'.repeat(times) + score.curScore;
 
                 count.left += changes.change / Math.abs(changes.change);
             }
@@ -418,7 +424,7 @@ const startGame = function (target) {
     target.classList.add('animated', 'bounceOut');
     setTimeout(() => {
         __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(target);
-        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(__WEBPACK_IMPORTED_MODULE_0__values__["g" /* wikiBut */]);
+        __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(__WEBPACK_IMPORTED_MODULE_0__values__["h" /* wikiBut */]);
         document.getElementById('math').hidden = true;
         chooseOperation();
     }, 230);
@@ -511,7 +517,7 @@ const go = function (e) {
 
     e.target.classList.add('animated', 'bounceOut');
     setTimeout(() => {
-        __WEBPACK_IMPORTED_MODULE_0__values__["h" /* operation */].sign = e.target.dataset.operation;
+        __WEBPACK_IMPORTED_MODULE_0__values__["i" /* operation */].sign = e.target.dataset.operation;
         const buttons = document.querySelectorAll('.operation');
         for (let i = 0; i < buttons.length; i++) {
             __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(buttons[i]);
@@ -521,7 +527,7 @@ const go = function (e) {
         const slider = document.querySelector('.slider');
         let thumb = document.querySelector('.thumb');
         const coord = Math.ceil((thumb.getBoundingClientRect().left - slider.getBoundingClientRect().left) / 70);
-        __WEBPACK_IMPORTED_MODULE_0__values__["i" /* speed */].speed = coord || 1;
+        __WEBPACK_IMPORTED_MODULE_0__values__["j" /* speed */].speed = coord || 1;
         __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(slider);
         thumb = document.querySelector('.thumb');
         if (thumb) {
@@ -709,7 +715,7 @@ const gameOver = function (back) {
     setTimeout(backBut => {
         __WEBPACK_IMPORTED_MODULE_0__values__["c" /* player */].style.display = 'none';
         __WEBPACK_IMPORTED_MODULE_0__values__["c" /* player */].style.transform = `translate(0px, 0px) scale(1, 1)`;
-        __WEBPACK_IMPORTED_MODULE_0__values__["k" /* scoreField */].style.display = 'none';
+        __WEBPACK_IMPORTED_MODULE_0__values__["l" /* scoreField */].style.display = 'none';
         if (!backBut) {
             const p = document.createElement('p');
             p.classList.add('level');
@@ -734,7 +740,7 @@ const gameOver = function (back) {
             __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.style.backgroundImage = '';
             __WEBPACK_IMPORTED_MODULE_3__objects_score__["b" /* score */].curScore = 0;
             __WEBPACK_IMPORTED_MODULE_0__values__["a" /* level */].num = 1;
-            __WEBPACK_IMPORTED_MODULE_0__values__["k" /* scoreField */].textContent = '000';
+            __WEBPACK_IMPORTED_MODULE_0__values__["l" /* scoreField */].textContent = '000';
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__gamestart__["b" /* chooseOperation */])();
         }
     }, 200, back);
@@ -771,8 +777,8 @@ const showWiki = function (target) {
     target.classList.add('animated', 'bounceOut');
     setTimeout(() => {
         target.classList.remove('animated', 'bounceOut');
-        __WEBPACK_IMPORTED_MODULE_0__values__["g" /* wikiBut */].hidden = true;
-        __WEBPACK_IMPORTED_MODULE_0__values__["f" /* startGameBut */].hidden = true;
+        __WEBPACK_IMPORTED_MODULE_0__values__["h" /* wikiBut */].hidden = true;
+        __WEBPACK_IMPORTED_MODULE_0__values__["g" /* startGameBut */].hidden = true;
         document.getElementById('math').hidden = true;
         renderWiki();
     }, 230);
@@ -855,8 +861,8 @@ const backToStart = function (e) {
         image = null;
         leftArr = null;
         rightArr = null;
-        __WEBPACK_IMPORTED_MODULE_0__values__["g" /* wikiBut */].hidden = false;
-        __WEBPACK_IMPORTED_MODULE_0__values__["f" /* startGameBut */].hidden = false;
+        __WEBPACK_IMPORTED_MODULE_0__values__["h" /* wikiBut */].hidden = false;
+        __WEBPACK_IMPORTED_MODULE_0__values__["g" /* startGameBut */].hidden = false;
         document.getElementById('math').hidden = false;
     }, 200);
 
@@ -921,9 +927,9 @@ const animateBalloons = function () {
         const goPx = [];
         for (let i = 0; i < 12; i++) {
             if (i % 5) {
-                goPx[i] = __WEBPACK_IMPORTED_MODULE_0__game_values__["i" /* speed */].speed;
+                goPx[i] = __WEBPACK_IMPORTED_MODULE_0__game_values__["j" /* speed */].speed;
             } else {
-                goPx[i] = __WEBPACK_IMPORTED_MODULE_0__game_values__["i" /* speed */].speed - 1;
+                goPx[i] = __WEBPACK_IMPORTED_MODULE_0__game_values__["j" /* speed */].speed - 1;
             }
         }
 
@@ -1061,6 +1067,10 @@ const removeBalloons = function (selectBall) {
     const num = parseInt(balloons[0].elem.innerHTML, 10);
     for (let i = 0; i < balloons.length; i++) {
         if (selectBall && balloons[i] === selectBall) {
+            if (__WEBPACK_IMPORTED_MODULE_0__game_values__["f" /* sound */].on) {
+                const audio = new Audio('./audio/balloon-pop.ogg');
+                audio.play();
+            }
             checkSelection(selectBall, num);
         }
         __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].node.removeChild(balloons[i].elem);
@@ -1076,9 +1086,9 @@ const removeBalloons = function (selectBall) {
     ballOnField.on = false;
     document.removeEventListener('click', selectBalloon);
     setTimeout(() => {
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["l" /* patrick */].style.backgroundPosition = '0px 0px';
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["m" /* exampleField */].style.display = 'none';
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["l" /* patrick */].style.display = 'none';
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["m" /* patrick */].style.backgroundPosition = '0px 0px';
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["n" /* exampleField */].style.display = 'none';
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["m" /* patrick */].style.display = 'none';
     }, 1000);
 };
 
@@ -1087,7 +1097,7 @@ const checkSelection = function (selectBall, num) {
         explode(selectBall, 0);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__score__["d" /* changeScore */])(100);
         __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '-200px 0px';
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["l" /* patrick */].style.backgroundPosition = '-80px 0px';
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["m" /* patrick */].style.backgroundPosition = '-80px 0px';
         setTimeout(() => {
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__player__["a" /* showPlayerMessage */])('You\'re genius! :)', true);
             __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '0px 0px';
@@ -1098,7 +1108,7 @@ const checkSelection = function (selectBall, num) {
         }
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__score__["d" /* changeScore */])(-50);
         __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].style.backgroundPosition = '-300px 0px';
-        __WEBPACK_IMPORTED_MODULE_0__game_values__["l" /* patrick */].style.backgroundPosition = '-160px 0px';
+        __WEBPACK_IMPORTED_MODULE_0__game_values__["m" /* patrick */].style.backgroundPosition = '-160px 0px';
         if (!__WEBPACK_IMPORTED_MODULE_2__score__["a" /* endOfGame */].end) {
             if (selectBall) {
                 setTimeout(() => {
@@ -1165,7 +1175,7 @@ let exampleInField = false;
 let answers = [];
 
 const startExample = function () {
-    const style = getComputedStyle(__WEBPACK_IMPORTED_MODULE_0__game_values__["m" /* exampleField */]);
+    const style = getComputedStyle(__WEBPACK_IMPORTED_MODULE_0__game_values__["n" /* exampleField */]);
     if (style.display !== 'none') {
         if (!exampleInField) {
             showExample();
@@ -1250,10 +1260,10 @@ const showExample = function () {
         return [answer, answer + generateNum(10, answer), answer + generateNum(10, answer)];
     }
 
-    if (__WEBPACK_IMPORTED_MODULE_0__game_values__["h" /* operation */].sign.length === 1) {
-        answers = generator(__WEBPACK_IMPORTED_MODULE_0__game_values__["h" /* operation */].sign);
+    if (__WEBPACK_IMPORTED_MODULE_0__game_values__["i" /* operation */].sign.length === 1) {
+        answers = generator(__WEBPACK_IMPORTED_MODULE_0__game_values__["i" /* operation */].sign);
     } else {
-        answers = generator(__WEBPACK_IMPORTED_MODULE_0__game_values__["h" /* operation */].sign[Math.round(Math.random() * 3)]);
+        answers = generator(__WEBPACK_IMPORTED_MODULE_0__game_values__["i" /* operation */].sign[Math.round(Math.random() * 3)]);
     }
 
     for (let i = 0; i < answers.length; i++) {
@@ -1264,7 +1274,7 @@ const showExample = function () {
         }
     }
 
-    __WEBPACK_IMPORTED_MODULE_0__game_values__["m" /* exampleField */].innerHTML = example;
+    __WEBPACK_IMPORTED_MODULE_0__game_values__["n" /* exampleField */].innerHTML = example;
     exampleInField = true;
 };
 
@@ -1369,17 +1379,19 @@ const loadImgAudio = function () {
 const mute = function (e) {
     if (e.target.checked) {
         audio.play();
+        __WEBPACK_IMPORTED_MODULE_4__values__["f" /* sound */].on = true;
     } else {
         audio.pause();
+        __WEBPACK_IMPORTED_MODULE_4__values__["f" /* sound */].on = false;
     }
 };
 
 const start = function (e) {
     const target = e.target;
-    if (target === __WEBPACK_IMPORTED_MODULE_4__values__["f" /* startGameBut */]) {
+    if (target === __WEBPACK_IMPORTED_MODULE_4__values__["g" /* startGameBut */]) {
         document.removeEventListener('click', start);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__gamestart__["a" /* startGame */])(target);
-    } else if (target === __WEBPACK_IMPORTED_MODULE_4__values__["g" /* wikiBut */]) {
+    } else if (target === __WEBPACK_IMPORTED_MODULE_4__values__["h" /* wikiBut */]) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__wiki__["a" /* default */])(target);
     }
 
@@ -1389,7 +1401,7 @@ const start = function (e) {
 document.addEventListener('DOMContentLoaded', loadImgAudio);
 document.addEventListener('click', start);
 setTimeout(() => {
-    __WEBPACK_IMPORTED_MODULE_4__values__["f" /* startGameBut */].classList.add('animated', 'pulse', 'infinite');
+    __WEBPACK_IMPORTED_MODULE_4__values__["g" /* startGameBut */].classList.add('animated', 'pulse', 'infinite');
 }, 3500);
 
 __WEBPACK_IMPORTED_MODULE_4__values__["d" /* backButton */].addEventListener('click', backFunc);
