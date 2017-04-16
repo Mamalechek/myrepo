@@ -15,9 +15,6 @@ const addPlayer = function () {
     document.addEventListener('keyup', removeKey);
     leftBorder = field.width - player.offsetWidth;
 
-    window.addEventListener('resize', () => {
-        leftBorder = field.width - player.offsetWidth;
-    });
     getPlayerCoords();
 };
 
@@ -195,6 +192,9 @@ const delPlayerMessage = function (mark) {
     }
 };
 
+window.addEventListener('resize', () => {
+    leftBorder = field.width - player.offsetWidth;
+});
 
 export {
     playerCoords,

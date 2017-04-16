@@ -87,7 +87,6 @@ const backToStart = function (e) {
 
     target.classList.add('animated', 'bounceOut');
     setTimeout(() => {
-        window.removeEventListener('resize', resizeImage);
         field.node.removeChild(image);
         field.node.removeChild(leftArr);
         field.node.removeChild(rightArr);

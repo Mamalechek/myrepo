@@ -183,9 +183,6 @@ const addPlayer = function () {
     document.addEventListener('keyup', removeKey);
     leftBorder = __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].width - __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].offsetWidth;
 
-    window.addEventListener('resize', () => {
-        leftBorder = __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].width - __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].offsetWidth;
-    });
     getPlayerCoords();
 };
 
@@ -355,6 +352,10 @@ const delPlayerMessage = function (mark) {
         }
     }
 };
+
+window.addEventListener('resize', () => {
+    leftBorder = __WEBPACK_IMPORTED_MODULE_0__game_values__["e" /* field */].width - __WEBPACK_IMPORTED_MODULE_0__game_values__["c" /* player */].offsetWidth;
+});
 
 
 
@@ -852,7 +853,6 @@ const backToStart = function (e) {
 
     target.classList.add('animated', 'bounceOut');
     setTimeout(() => {
-        window.removeEventListener('resize', resizeImage);
         __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(image);
         __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(leftArr);
         __WEBPACK_IMPORTED_MODULE_0__values__["e" /* field */].node.removeChild(rightArr);
