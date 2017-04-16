@@ -186,8 +186,8 @@ const removeBalloons = function (selectBall) {
     for (let i = 0; i < balloons.length; i++) {
         if (selectBall && balloons[i] === selectBall) {
             if (sound.on) {
-                const audio = new Audio('./audio/balloon-pop.ogg');
-                audio.play();
+                const audioPop = new Audio('./audio/balloon-pop.ogg');
+                audioPop.play();
             }
             checkSelection(selectBall, num);
         }

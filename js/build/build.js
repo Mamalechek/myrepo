@@ -210,8 +210,8 @@ const movePlayer = function (e) {
     if (key === 38 || key === 87 || pressedKeys['38'] || pressedKeys['87']) {
         if (!playerInJump) {
             if (__WEBPACK_IMPORTED_MODULE_0__game_values__["f" /* sound */].on) {
-                const audio = new Audio('./audio/player-jump.ogg');
-                audio.play();
+                const audioJump = new Audio('./audio/player-jump.ogg');
+                audioJump.play();
             }
             playerInJump = true;
             playerJump();
@@ -1068,8 +1068,8 @@ const removeBalloons = function (selectBall) {
     for (let i = 0; i < balloons.length; i++) {
         if (selectBall && balloons[i] === selectBall) {
             if (__WEBPACK_IMPORTED_MODULE_0__game_values__["f" /* sound */].on) {
-                const audio = new Audio('./audio/balloon-pop.ogg');
-                audio.play();
+                const audioPop = new Audio('./audio/balloon-pop.ogg');
+                audioPop.play();
             }
             checkSelection(selectBall, num);
         }
@@ -1374,6 +1374,9 @@ const loadImgAudio = function () {
         document.forms[0].style.display = 'block';
         document.forms[0].elements[0].addEventListener('change', mute);
     }
+    const audioLoad = new Audio();
+    audioLoad.src = './audio/player-jump.ogg';
+    audioLoad.src = './audio/balloon-pop.ogg';
 };
 
 const mute = function (e) {

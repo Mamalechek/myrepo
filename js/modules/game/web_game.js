@@ -1,14 +1,34 @@
-import { startGame } from './gamestart';
 import {
-    showPlayerMessage, jumpHeight, playerJump,
+    startGame
+} from './gamestart';
+import {
+    showPlayerMessage,
+    jumpHeight,
+    playerJump,
 } from '../objects/player';
-import { startExample } from '../objects/examples';
-import { score, endOfGame, count, changeScore } from '../objects/score';
 import {
-    startGameBut, wikiBut, field, showLevel, level, player, backButton, sound,
+    startExample
+} from '../objects/examples';
+import {
+    score,
+    endOfGame,
+    count,
+    changeScore
+} from '../objects/score';
+import {
+    startGameBut,
+    wikiBut,
+    field,
+    showLevel,
+    level,
+    player,
+    backButton,
+    sound,
 } from './values';
 import {
-    createBalloons, ballOnField, animateBalloons,
+    createBalloons,
+    ballOnField,
+    animateBalloons,
 } from '../objects/balloons';
 import gameOver from './gameover';
 import showWiki from './wiki';
@@ -38,14 +58,14 @@ const mainFunc = function main() {
     requestAnimationFrame(main);
 };
 
-const levelUp = function () {
+const levelUp = function() {
     level.num = Math.floor(score.curScore / 1000) + 1;
     showLevel(level.num);
     player.style.backgroundPosition = '-400px 0px';
     showPlayerMessage('HEY-HEY! <br> Wonderfu-u-ul! <br> Level UP!');
 };
 
-const render = function () {
+const render = function() {
     if (jumpHeight.height) {
         playerJump();
     }
@@ -59,12 +79,12 @@ const render = function () {
     }
 };
 
-const backFunc = function () {
+const backFunc = function() {
     backButton.classList.add('animated', 'bounceOut');
     gameOver(true);
 };
 
-const loadImgAudio = function () {
+const loadImgAudio = function() {
     const sources = [
         './img/kids-math-game.jpg',
         './img/wiki/choose.png',
@@ -83,18 +103,23 @@ const loadImgAudio = function () {
     document.body.appendChild(div);
     div.innerHTML = `<img src="${sources.join('" /><img src="')}" />`;
     const lastImg = div.lastChild;
-    lastImg.onload = () => { document.body.removeChild(div); };
+    lastImg.onload = () => {
+        document.body.removeChild(div);
+    };
 
     if (!audio && document.getElementById('audio')) {
         audio = document.getElementById('audio');
         document.forms[0].style.marginLeft = `calc(50% + ` +
-                                                `${(field.width / 2) - 60}px)`;
+            `${(field.width / 2) - 60}px)`;
         document.forms[0].style.display = 'block';
         document.forms[0].elements[0].addEventListener('change', mute);
     }
+    const audioLoad = new Audio();
+    audioLoad.src = './audio/player-jump.ogg';
+    audioLoad.src = './audio/balloon-pop.ogg';
 };
 
-const mute = function (e) {
+const mute = function(e) {
     if (e.target.checked) {
         audio.play();
         sound.on = true;
@@ -104,7 +129,7 @@ const mute = function (e) {
     }
 };
 
-const start = function (e) {
+const start = function(e) {
     const target = e.target;
     if (target === startGameBut) {
         document.removeEventListener('click', start);
@@ -126,4 +151,3 @@ setTimeout(() => {
 backButton.addEventListener('click', backFunc);
 
 mainFunc();
-

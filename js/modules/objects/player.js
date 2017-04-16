@@ -43,8 +43,8 @@ const movePlayer = function (e) {
     if (key === 38 || key === 87 || (pressedKeys['38'] || pressedKeys['87'])) {
         if (!playerInJump) {
             if (sound.on) {
-                const audio = new Audio('./audio/player-jump.ogg');
-                audio.play();
+                const audioJump = new Audio('./audio/player-jump.ogg');
+                audioJump.play();
             }
             playerInJump = true;
             playerJump();
