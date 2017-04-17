@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './modules/game/web_game',
+    entry: `${__dirname}/modules/game/web_game`,
     output: {
         path: path.join(__dirname, './build/'),
         filename: 'build.js',
