@@ -114,9 +114,10 @@ const loadImgAudio = function() {
         document.forms[0].style.display = 'block';
         document.forms[0].elements[0].addEventListener('change', mute);
     }
-    const audioLoad = new Audio();
-    audioLoad.src = './audio/player-jump.ogg';
-    audioLoad.src = './audio/balloon-pop.ogg';
+    const audioLoadJump = new Audio();
+    audioLoadJump.src = './audio/player-jump.ogg';
+    const audioLoadPop = new Audio();
+    audioLoadPop.src = './audio/balloon-pop.ogg';
 };
 
 const mute = function(e) {
