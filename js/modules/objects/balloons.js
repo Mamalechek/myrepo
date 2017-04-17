@@ -150,9 +150,9 @@ const addBalloons = function () {
 
 const selectBalloon = function (e) {
     const target = e.target;
-    selectedBall = true;
     for (let i = 0; i < balloons.length; i++) {
         if (balloons[i].elem === target) {
+            selectedBall = true;
             removeBalloons(balloons[i]);
             break;
         }
